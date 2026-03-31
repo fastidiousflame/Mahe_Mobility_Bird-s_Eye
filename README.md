@@ -109,15 +109,14 @@ def forward(self, imgs, K, E):
 
 ## 🧪 Results
 
-| Version | Description | IoU |
-|---------|-------------|-----|
-| V1 | Basic IPM | ~0.20 |
-| V3 | Multi-view fusion | ~0.27 |
-| V5 | Final projection model | **~0.40+** |
+| Version | Description | IoU | DWE |
+|---------|-------------|-----|-----|
+| V1 | Basic IPM — flat ground projection | ~0.20 | — |
+| V4 | MLP BEV bottleneck + BCE/Dice loss + augmentation + TTA | ~0.27 | — |
+| **V5** | Reverse projection + `grid_sample` + GT dilation | **0.4015** | **0.4126** |
 
-DWE:- ~0.41
-
-Previous In earlier version :- DWE coming lesser ~0.27
+> **Full inference over 404 samples:** Mean IoU `0.3795` · Mean DWE `0.4203`  
+> **Qualitative eval (4 scenes):** Mean IoU `0.4271` · Mean DWE `0.4038`
 
 ---
 
@@ -140,7 +139,7 @@ gt = cv2.dilate(gt, kernel, iterations=1)
 
 - Thicker occupancy regions
 - Better overlap with predictions
-- Significant IoU boost (~0.12 → ~0.40)
+- Significant IoU boost (~0.27 → ~0.40)
 
 ---
 
