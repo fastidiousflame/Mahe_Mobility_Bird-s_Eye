@@ -112,7 +112,7 @@ def forward(self, imgs, K, E):
 | Version | Description | IoU |
 |---------|-------------|-----|
 | V1 | Basic IPM | ~0.20 |
-| V3 | Multi-view fusion | ~0.24 |
+| V3 | Multi-view fusion | ~0.27 |
 | V5 | Final projection model | **~0.40+** |
 
 DWE:- ~0.41
